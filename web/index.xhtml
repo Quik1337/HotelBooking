@@ -1,11 +1,53 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title></title>
+        <h:outputStylesheet library="css" name="style.css" />
     </h:head>
     <h:body>
+        <f:view>
+            <h:form>
+                <h:panelGrid styleClass="panel1"
+                             columns="5">
+                    <h:panelGroup styleClass="panelGroups">
+                        <h:outputLabel for="input"
+                                       value="Var vill du bo?" />
+                        <br/>
+                        <h:selectOneMenu value="#{hotelController.hotelName}">
+                            <f:selectItems value="#{hotelController.hotels}"/>
+                        </h:selectOneMenu>
+                    </h:panelGroup>
+                    
+                    <h:panelGroup styleClass="panelGroups">
+                        <h:outputLabel value="Ankomst"/>
+                        <br/>
+                        <h:inputText id="input2" value="#{hotelController.startDate}"/>
+                    </h:panelGroup>
+                    
+                    <h:panelGroup styleClass="panelGroups">
+                        <h:outputLabel value="Avresa"/>
+                        <br/>
+                        <h:inputText id="input3" value="#{hotelController.endDate}"/>
+                    </h:panelGroup>
+                    <h:panelGroup styleClass="panelGroups">
+                        <h:outputLabel value="Antal personer"/>
+                        <br/>
+                        <h:selectOneMenu value="#{hotelController.amount}">
+                            <f:selectItem itemValue="1"/>
+                            <f:selectItem itemValue="2"/>
+                            <f:selectItem itemValue="3"/>
+                        </h:selectOneMenu>
+                    </h:panelGroup>
+                    
+                    <h:panelGroup styleClass="panelGroups">
+                        <br/>
+                        <h:commandButton action="newjsf" value="Se rum och priser"/>
+                    </h:panelGroup>
+                </h:panelGrid>
+            </h:form>
+            <h:outputText value="#{hotelController.startDate}"/>
+        </f:view>
     </h:body>
 </html>
-
